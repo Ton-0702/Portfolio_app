@@ -1,0 +1,40 @@
+{%extends "home_invest.html" %}
+{% block li %} CASH IN {% endblock %}
+    {%block content%}
+    <div class="column1">
+        <div class="asset-home">
+            <div class="header-asset">
+                <form action="#" method="post" autocomplete="off", id="form-deposit">
+                    <div>
+                        <h1 class="h1-home">CASH-IN ACCOUNT</h1>
+                    </div>
+
+                    <div class="form-home">
+                        <label class="form-name" for="deposit">CASH-IN:</label>
+                        <input type="number" class="form-name--input"
+                        placeholder="Amount money" id="Cashin" name="Cashin" required>
+                    </div>
+
+                    <div class="register-form__group5">
+                        <!-- <button type="button_create_acc" onclick="document.getElementById('id01').style.display='none'" class="register-form__group5__button">TẠO TÀI KHOẢN</button> -->
+                        <!-- <div class="msg">{{ msg }}</div> -->
+                        <input type="submit" id="btnSubmit_deposit" class="create-portfolio__button" value="CASH IN ACCOUNT">
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    
+    {% for message in get_flashed_messages() %}
+        <div id='id02' class="modal" autocomplete="off">
+            <div class="modal__body">
+                <div class="msg2">{{ message }}</div>
+                <div class="close-crt--acc">
+                    <span onclick="document.getElementById('id02').style.display='none'" title="Close tab">
+                        <button class="btn-close-acc">CLOSE</button>
+                    </span>
+                </div>
+            </div>
+        </div>
+    {% endfor %}
+    {% endblock %}

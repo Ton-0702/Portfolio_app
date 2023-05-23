@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css">
+    <!-- <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}" />
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/base.css') }}" /> -->
+
+    <link rel="stylesheet" href="./static/fontawesome-free-6.3.0-web/css/all.min.css">
+    <link rel="stylesheet" href="./static/css/styles.css">
+    <link rel="stylesheet" href="./static/css/base.css">
+    <meta charset="utf-8">
+    <!-- <script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.4"></script> -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+
+<body class="body-home">
+    <div class="app-invest">
+        <div class="grid">
+            <div class="header-home">
+                <div class="menu-list">
+                    <i class="fa-solid fa-bars"></i>
+                </div>
+                <div class="menu-list-next">
+                    <ul class="menu-list-next--item">
+                        <li class="li-home">{% block li %} IUH-INVEST {% endblock %}</li>
+                    </ul>
+
+                    <ul class="menu-list-next--item menu-list-next--item__2">
+                        <a href="{{ url_for('account') }}" class="li-item-home">
+                            <i class="fa-solid fa-circle-user"></i>
+                            <div class="li-item-home__msg"> {{session['email_login']}}</div>
+                        </a>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="container">
+                <div class="menu-list2 menu-list2_delayed">
+                    <ul class="category-list ">
+                        <li class="category-item">
+                            <a href="{{ url_for('home_iuh_invest') }}" class="category-item__link">
+                                <i class="fa-sharp fa-solid fa-house"></i>
+                                <br>
+                                Home
+                            </a>
+                        </li>
+
+                        <li class="category-item category-item--has-pages category-item__link">
+                            <i class="fa-solid fa-circle-dollar-to-slot"></i>
+                            <br>
+                            Assets
+
+                            <div class="asset-list">
+                                <ul class="asset-list_page">
+                                    <li class="asset-page_item">
+                                        <a href="{{ url_for('asset') }}" class="asset-links_list">
+                                            <div class="asset-link">
+                                                <i class="fa-solid fa-money-check"></i>
+                                                My Assets
+                                            </div>
+                                        </a>
+                                    </li>
+
+                                    <li class="asset-page_item">
+                                        <a href="{{ url_for('deposit') }}" class="asset-links_list">
+                                            <div class="asset-link">
+                                                <i class="fa-solid fa-money-bill-transfer"></i>
+                                                Cash In
+                                            </div>
+                                        </a>
+                                    </li>
+
+                                    <li class="asset-page_item">
+                                        <a href="{{ url_for('withdraw') }}" class="asset-links_list">
+                                            <div class="asset-link">
+                                                <i class="fa-solid fa-hand-holding-dollar"></i>
+                                                Cash Out
+                                            </div>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </li>
+
+                       <li class="category-item category-item--has-pages category-item__link"> 
+                            <i class="fa-solid fa-arrow-trend-up"></i>
+                            <br>
+                            Stocks
+
+                            <div class="stock-list">
+                                <ul class="asset-list_page">
+
+                                    <li class="asset-page_item">
+                                        <a href="{{ url_for('stocks') }}" class="asset-links_list">
+                                            <div class="asset-link">
+                                                <i class="fa-solid fa-gavel"></i>
+                                                Stocks order
+                                            </div>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </li>
+                        
+                        <li class="category-item">
+                            <a href="{{ url_for('home_portfolio') }}" class="category-item__link">
+                                <i class="fa-solid fa-pen-to-square"></i>
+                                <br>
+                                Portfolio
+                            </a>
+                        </li>
+
+                        <li class="category-item">
+                            <a href="{{ url_for('logout') }}" class="category-item__link">
+                                <i class="fa-solid fa-arrow-right-from-bracket"></i>
+                                <br>
+                                Log out
+                                <!-- <span class="p-text-tc">Log out</span> -->
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+
+                
+                {% block content %}
+                <div class="container-column">
+                    <div class="home-container">
+                        <div class="home-container1-values home-container1-values_all">
+                            <div class="table-container" style="overflow-y: auto;">
+                                <table style="width:100%" id="user_portfolio">
+                                    <thead>
+                                        <tr>
+                                            <th>CODE</th>
+                                            <th>PORTFOLIO</th>
+                                            <th>TYPE</th>
+                                            <th width="900px">DESCRIPTION</th> <!--1069px -->
+                                            <th>CREATE DATE</th>
+                                            <th style="background-color:#363636"></th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        {% for row in data %}
+                                        <tr>
+                                            <form action="#" method="post">
+                                                {% for cell in row %}
+                                                <td><a href="/portfolio/{{ row[0] }}" id="btn_show" name="btn_show"
+                                                        class="a-show-port">{{ cell }}</a></td>
+                                                {% endfor %}
+                                            </form>
+                                            <form action="#" method="post">
+                                                <td><a href="/delete/{{ row[0] }}" id="btn_delete" name="btn_delete"
+                                                        onclick="deleteRow(this)"><i
+                                                            class="fa-solid fa-circle-minus"></i></a>
+                                                </td>
+                                            </form>
+                                        </tr>
+                                        {% endfor %}
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+
+                        <!-- <div class="home-container1-values">
+
+                        </div>
+                        
+                        <div class="home-container1-values">
+
+                        </div> -->
+                    </div>
+
+                    <div class="home-container2">
+                        <div class="home-container1-values">
+                            <div class="table-container table-container_chart" style="overflow-y: auto;">
+                                <table style="width:100%">
+                                    <thead>
+                                        <tr>
+                                            <th>STOCK</th>
+                                            <th>AMOUNT</th>
+                                            <th>STOCK PRICE</th>
+                                            <th>MARKET VALUE</th>
+                                        </tr>
+                                    <tbody>
+                                        <tr>
+                                            <td>{{ session['name_port'] }}</td>
+                                            <td></td>
+                                            <td></td>
+                                            <td>{{ session['market_port'] }}</td>
+                                        </tr>
+                                        {% for row in session['info_port'] %}
+                                        <tr>
+                                            {% for cell in row %}
+                                            <td>{{ cell }}</td>
+                                            {% endfor %}
+                                        </tr>
+                                        {% endfor %}
+                                        <!-- <tr>
+                                            <td style="background: black; width: 28%;">Đ-Vị: 1.000 VNĐ</td>
+                                        </tr> -->
+                                    </tbody>
+                                    </thead>
+                                </table>
+                                <div class="Unit">
+                                    Đ-Vị: 1.000 VNĐ
+                                </div>
+                            </div>
+                        </div>
+                        <div class="home-container1-values home-container1_chart">
+                            <canvas id="port_chart" width="970" height="365"></canvas>
+                            <script>
+                                var ctx = document.getElementById("port_chart").getContext("2d");
+                                var port_chart = new Chart(ctx, {
+                                    type:"bar",
+                                    data: {
+                                        labels: {{ session['labels'] | safe }},
+                                        datasets: [
+                                            {
+                                                label: "History Transaction",
+                                                data: {{ session['values'] | safe }},
+                                                fill: false,
+                                                borderWidth: 1,
+                                                backgroundColor: 'rgba(135, 206, 250, 1)'
+                                            }
+                                        ]
+                                    },
+                                    options: {
+                                        plugins: {
+                                            legend: {
+                                                labels: {
+                                                    color: 'white'
+                                                }
+                                            }
+                                        },
+                                        responsive: false,
+                                        scales: {
+                                            y: {
+                                                // beginAtZero: true,
+                                                ticks: { color: 'white', beginAtZero: true }
+                                            },
+                                            // xAxes:[{gridLines: { color: "#131c2b" }}],
+                                            x: {  // <-- axis is not array anymore, unlike before in v2.x: '[{'
+                                                ticks: { color: 'white', beginAtZero: true }
+                                            }
+                                        },
+                                        layout: {
+                                            padding: {
+                                                left: 20
+                                            }
+                                        }
+                                    }
+                                });
+                            </script>
+                        </div>
+                    </div>
+                </div>
+                
+                {% endblock %}
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function deleteRow(r) {
+            var i = r.parentNode.parentNode.rowIndex;
+            document.getElementById("user_portfolio").deleteRow(i);
+        }
+    </script>
+
+</body>
+
+</html>

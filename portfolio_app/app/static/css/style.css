@@ -1,0 +1,116 @@
+.header {
+    width: 100%;
+    height: 350px;
+    background-color: beige;
+    margin-bottom: 62px;
+}
+
+.header-nav {
+    height: auto;
+    background-color: aquamarine;
+    display: flex;
+    justify-content: space-between;
+    padding: 18px 24px 0;
+    margin:0;
+    margin-bottom: 37px;
+}
+
+/* .box {
+    width: 100%;
+    height: 600px;
+    background-color: black;
+    margin-top: 362px;
+    background-clip: content-box;
+} */
+
+
+.header-nav_navlist {
+    /* width: 100%;
+    height: 100%;
+    background-color: black; */
+    /* font-size: 28px; */
+    /* box-sizing: border-box;
+    justify-content: space-between;
+    display: flex; */ /*xác định cả cho flex-direction nằm row */
+    padding-left: 0;
+}
+
+.header-nav_navlist__item {
+    display: inline-block;
+    color: #fff;
+    list-style: none; /*bỏ dấu chấm đầu dòng*/  
+    margin-top: 40px;
+    font-size: 23px;
+}
+
+.header-nav_navlist__item--boled {
+    font-weight: bold;
+}
+
+.header-nav_navlist__img {
+    list-style: none;
+    display: inline-block;
+}
+
+.log-nav {
+    width: 100%;
+    height: 150px;
+    background-color: aquamarine;
+    display: flex;
+    justify-content: space-between;
+    margin: 0 auto;
+    margin-left: 40px;
+    margin-bottom: 150px;
+}
+
+#shrink1 {
+    -webkit-transform:scale(0.5);
+    -moz-transform:scale(0.5);
+    -ms-transform:scale(0.5);
+    transform:scale(0.5);
+}
+
+.log-nav-input{ /*div*/
+    padding-left: 0;
+}
+
+.log-nav-input__email {
+    display: inline-block;
+    color: #fff;
+    list-style: none; /*bỏ dấu chấm đầu dòng*/  
+    margin-top: 40px;
+    font-size: 23px;
+}
+
+/* .log-nav-from__row {
+    display: inline-flex;
+    padding: 8px 0;
+} */
+
+#email {
+    border-radius: 18px;
+    /* background: #600; */
+    margin: 10px;
+    /* padding: 10px; */
+    height: 50px;
+    font-size: 14px;
+}
+
+#pw {
+    border-radius: 18px;
+    /* background: #600; */
+    margin: 10px;
+    /* padding: 10px; */
+    height: 50px;
+    font-size: 14px;
+}
+
+#login_account {
+    border-radius: 10px;
+    /* background: #600; */
+    margin: 10px;
+    /* padding: 10px; */
+    height: 50px;
+    width: 160px;
+    font-size: 14px;
+}

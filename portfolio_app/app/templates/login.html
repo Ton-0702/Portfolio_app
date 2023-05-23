@@ -1,0 +1,76 @@
+<!doctype html>
+<html>
+
+<head>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css">
+    <!-- <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}" />
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/base.css') }}" /> -->
+
+    <link rel="stylesheet" href="./static/fontawesome-free-6.3.0-web/css/all.min.css">
+    <link rel="stylesheet" href="./static/css/styles.css">
+    <link rel="stylesheet" href="./static/css/base.css">
+    <meta charset="utf-8">
+</head>
+
+<body>
+    <div class="app">
+        <header class="header">
+            <div class="grid">
+                <nav class="header__navbar">
+                    <ul class="header__navbar-list">
+                        <li class="header__navbar-item">
+                            <img src="https://upload.wikimedia.org/wikipedia/commons/b/bf/Logo_IUH.png" alt="IUH_LOGO"
+                                width="250" height="75">
+                        </li>
+                    </ul>
+
+                    <ul class="header__navbar-list">
+                        <li class="header__navbar-item header__navbar-item--strong header__navbar-item--center">
+                            IUH-INVEST</li>
+                        </li>
+                    </ul>
+                </nav>
+
+                <div class="header-with-input">
+                    <form class="form-inline" method="post" action="#">
+                        <input type="email" id="email_login" placeholder="Enter email" name="email_login"
+                            pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$">
+                        <input type="password" id="pw_login" placeholder="Enter password" name="pw_login">
+                        <button type="submit">Submit</button>
+                    </form>
+                </div>
+
+                <div class="header-with-forgot-pw">
+                    <form class="form-inline-forgot" action="#">
+                        <p class="form-inline-p">Quên mật khẩu? Lấy lại <a href="#">Tại đây</a>.</p>
+                    </form>
+                </div>
+
+                <div class="header-with-img">
+                    <!-- <a onclick="document.getElementById('id01').style.display='block'" class="icon-block"> -->
+                    <a href="/register" class="icon-block">
+                        <i class="fa-solid fa-circle-user"></i>
+                        <span class="p-text">Mở tài khoản</span>
+                    </a>
+                    <!-- <p class="p-text">Mở tài khoản</p> -->
+                </div>
+            </div>
+        </header>
+        <!-- // modal elements here -->
+        {% for message in get_flashed_messages() %}
+        <div id='id01' class="modal" autocomplete="off">
+            <div class="modal__body">
+                <div class="msg2">{{ message }}</div>
+                <div class="close-crt--acc">
+                    <span onclick="document.getElementById('id01').style.display='none'" title="Close tab">
+                        <button class="btn-close-acc">CLOSE</button>
+                    </span>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+        <!-- Modal layout -->
+    </div>
+</body>
+
+</html>

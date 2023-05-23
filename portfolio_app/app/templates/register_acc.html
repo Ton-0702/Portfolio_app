@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css">
+    <!-- <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}" />
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/base.css') }}" /> -->
+
+    <link rel="stylesheet" href="./static/fontawesome-free-6.3.0-web/css/all.min.css">
+    <link rel="stylesheet" href="./static/css/styles.css">
+    <link rel="stylesheet" href="./static/css/base.css">
+    <meta charset="utf-8">
+</head>
+
+<body class="body-color">
+    <div class="content">
+        <div class="header-register">
+            <h1 class="h1-register">TẠO TÀI KHOẢN</h1>
+        </div>
+        <form action="#" method="post" autocomplete="off">
+            <div class="register-form__header">
+                <div class="register-form__group1" style="float:left;margin-right:20px;">
+                    <label class="register-form__label" for="email">*Email</label>
+                    <input type="email" class="register-form__input" placeholder="Email" id="email" name="email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" title="Miền email ít nhất 2 kí tự" required>
+                </div>
+
+                <div class="register-form__group1" style="float:left;">
+                    <label class="register-form__label" for="name">*Họ tên</label>
+                    <input type="text" class="register-form__input" placeholder="Họ tên" id="name" name="name" pattern="[A-Za-z].{2,}" title="Nhập đầy đủ họ tên" required>
+                </div>
+            </div>
+
+            <div class="register-form__header">
+                <div class="register-form__group2" style="float:left;margin-right:20px;">
+                    <label class="register-form__label" for="cccd">*CCCD/CMND</label>
+                    <input type="number" class="register-form__input" value=" " placeholder="CCCD/CMND" pattern="[0-9].{9,12}" title="CCCD cần đủ 9 hoặc 12 số"
+                        id="passport" name="passport" required>
+                </div>
+
+                <div class="register-form__group2" style="float:left;">
+                    <label class="register-form__label" for="address">Địa chỉ</label>
+                    <input type="text" class="register-form__input" placeholder="Địa chỉ" id="address" name="address" title="Nhập địa chỉ hiện tại">
+                </div>
+            </div>
+
+            <div class="register-form__header">
+                <div class="register-form__group3" style="float:left;margin-right:20px;">
+                    <label class="register-form__label" for="phone">Số điện thoại</label>
+                    <input type="number" class="register-form__input" value=" " placeholder="Số điện thoại" pattern="[0-9]{10}" title="Nhập số điện thoại tối đa 10 số"
+                        id="phone" name="phone">
+                </div>
+
+                <div class="register-form__group3" style="float:left;">
+                    <label class="register-form__label" for="date">*Ngày sinh</label>
+                    <input type="date" class="register-form__input date-input" id="date" name="date" required>
+                </div>
+            </div>
+
+            <div class="register-form__header">
+                <div class="register-form__group4" style="float:left">
+                    <label class="register-form__label" for="pw">Mật khẩu</label>
+                    <input type="password" class="register-form__input register-form__input__pw"
+                        placeholder="Mật khẩu" size="50" id="pw" name="pw"  autocomplete="current-password" required>
+                </div>        
+            </div>
+
+            <div class="register-form__header">
+                <div class="register-form__group5">
+                    <!-- <button type="button_create_acc" onclick="document.getElementById('id01').style.display='none'" class="register-form__group5__button">TẠO TÀI KHOẢN</button> -->
+                    <div class="msg">{{ msg }}</div>
+                    <input type="submit" class="register-form__group5__button" value="TẠO TÀI KHOẢN">
+                </div>
+            </div>
+        </form>
+
+        <!-- <form action="#" method="post" autocomplete="off">
+            <label for="username">
+                <i class="fa fa-user"></i>
+            </label>
+            <input type="text" name="username" placeholder="Username" id="username" required>
+            <label for="password">
+                <i class="fa fa-lock"></i>
+            </label>
+            <input type="password" name="password" placeholder="Password" id="password" required>
+            <label for="email">
+                <i class="fa fa-envelope-open"></i>
+            </label>
+            <input type="email" name="email" placeholder="Email" id="email" required>
+            <div class="msg">{{ msg }}</div>
+            <input type="submit" value="Register">
+        </form> -->
+    </div>
+</body>
+
+</html>

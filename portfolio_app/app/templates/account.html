@@ -1,0 +1,49 @@
+{%extends "home_invest.html" %}
+{% block li %} ACCOUNT {% endblock %}
+    {%block content%}
+    <div class="column1">
+        <div class="profiles">
+            <div class="info">
+                <i class="fa-solid fa-user"></i>
+                <div class="info__msg">{{session['name']}}</div>
+            </div>
+
+            <div class="info">
+                <div class="info__prof">Thông tin cá nhân</div>
+                <div class="info-hr"><hr></div>
+            </div>
+
+            <div class="info">
+                <div class="info-acc">
+                    <p>Số điện thoại</p>
+                    <p>{{session['phone']}}</p>
+                </div>
+
+                <div class="info-acc">
+                    <p>CCCD/CMND</p>
+                    <p>{{session['national_id']}}</p>
+                </div>
+            </div>
+
+            <div class="info">
+                <div class="info-acc">
+                    <p>Email</p>
+                    <p>{{session['email_login']}}</p>
+                </div>
+
+                <div class="info-acc">
+                    <p>Địa chỉ</p>
+                    <p>{{session['address']}}</p>
+                </div>
+            </div>
+
+            <div class="info">
+                <div class="info-acc">
+                    <p>Ngày sinh</p>
+                    <p>{{session['date_of_birth']}}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    {% endblock %}

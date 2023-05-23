@@ -1,0 +1,96 @@
+{%extends "home_invest.html" %}
+{% block li %} ASSETS {% endblock %}
+{%block content%}
+
+<div class="container-column">
+    <div class="home-container home-container__asset">
+        <div class="home-container1-values home-container1-values_asset">
+            <div class="asset-name">
+                ASSETS
+            </div>
+
+            <div class="asset">
+                <div class="asset-currency">
+                    <p>Currency: </p>
+                    <p>{{ session['cash_amount'] }}</p>
+                </div>
+
+                <!-- <div class="asset-currency">
+                    <p>Amount of stocks: </p>
+                    <p>{{ session['amount_stock'] }}</p>
+                </div> -->
+
+                <!-- <div class="asset-currency asset-currency_border">
+                        <p>Money to buy shares: </p>
+                        <p>0</p>
+                    </div> -->
+
+                <!-- <div class="asset-currency asset-currency_button">
+                        <form class="form-inline" method="post" action="#">
+                            <button class="button-asset" type="submit">Deposit</button>
+                            <button class="button-asset2" type="submit">Withdraw</button>
+                        </form>
+                    </div> -->
+            </div>
+
+        </div>
+
+        <div class="home-container-asset_stock">
+            <div class="home-container1-values home-container1-values__asset-stocks">
+                <div class="table-container table-container_asset" style="overflow-y: auto;">
+                    <table style="width:100%" id="trans_portfolio">
+                        <thead>
+                            <tr>
+                                <th>PORTFOLIO</th>
+                                <th>STOCK</th>
+                                <th>AMOUNT</th>
+                                <th>PRICE</th>
+                                <th>MARKET VALUE</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for row in session['data_stocks_asset'] %}
+                            <tr>
+                                {% for cell in row %}
+                                <td>{{ cell }}</td>
+                                {% endfor %}
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <div class="home-container-asset_history">
+            <div class="home-container1-values home-container1-values_asset-history">
+                <div class="table-container table-container_asset" style="overflow-y: auto;">
+                    <table style="width:100%" id="trans_portfolio">
+                        <thead>
+                            <tr>
+                                <th>STOCK</th>
+                                <th>TYPE</th>
+                                <th>AMOUNT</th>
+                                <th>PRICE</th>
+                                <th>DATE TIME</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for row in session['data_history'] %}
+                            <tr>
+                                {% for cell in row %}
+                                <!-- {% if cell != 'Buy' or cell !='Sell' %} -->
+                                <td>{{ cell }}</td>
+                                <!-- {% endif %} -->
+                                {% endfor %}
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

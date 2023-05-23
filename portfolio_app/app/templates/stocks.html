@@ -1,0 +1,135 @@
+{%extends "home_invest.html" %}
+{% block li %} PORTFOLIO {% endblock %}
+{%block content%}
+<div class="container-column">
+  <div class="home-container">
+    <div class="home-container1-values home-container1-values_all">
+      <div class="with-search">
+        <!-- <form class="form-order" action="#" method="post" autocomplete="off" id="form-order"> -->
+        <form autocomplete="off" action="#" method="post" id="myForm-port_post">
+          <div class="search-port">
+            <input type="text" class="search-port_input" id="search_suggest" name="search_suggest"
+              placeholder="Enter Code Portfolio" required>
+          </div>
+          <input type="submit" class="hide-submit-port">
+        </form>
+
+        <form class="form-search" action="#" method="post" autocomplete="off" id="form-search_stocks">
+          <div class="search-stocks">
+            <input type="text" class="search-stocks_input" placeholder="Stock" id="search_stocks" name="search_stocks"
+              value="{{ request.form['search_stocks'] }}" required>
+          </div>
+          <input type="submit" class="hide-submit-port">
+        </form>
+
+        <div class="form-price">
+          <label>Price</label>
+          <h1 class="form-amount_stocks form-price_stocks">{{ session['price'] }}<h1>
+        </div>
+
+        <form class="form-search" action="#" method="post" autocomplete="off" id="form-buy_stocks">
+          <div class="form-trans">
+            <input type="submit" id="btnSubmit_buy" name='btnSubmit_buy' class="form-buy" value="BUY">
+          </div>
+          <!-- </form> -->
+
+          <div class="form-amount">
+            <!-- <button class="form-amount_plus_minus form-amount_minus" onclick="decrement_stocks()"><i
+                class="fa-solid fa-minus"></i></button> -->
+
+            <label>Amount</label>
+            <input type="number" id="Amount_stocks" name="Amount_stocks" class="form-amount_stocks" min=0 step="10">
+
+            <!-- <button class="form-amount_plus_minus" onclick="increment_stocks()"><i
+                class="fa-solid fa-plus"></i></button> -->
+          </div>
+
+          <!-- <form class="form-search" action="#" method="post" autocomplete="off" id="form-sell_stocks"> -->
+          <div class="form-trans">
+            <input type="submit" id="btnSubmit_sell" name="btnSubmit_sell" class="form-buy form-sell" value="SELL">
+          </div>
+        </form>
+        <!-- </form> -->
+      </div>
+
+      <div class="stock_order-container-stocks">
+        <div class="table-container" style="overflow-y: auto;">
+          <table style="width:100%" id="trans_portfolio">
+            <thead>
+              <tr>
+                <th>STOCK</th>
+                <th>TYPE</th>
+                <th>AMOUNT</th>
+                <th>PRICE</th>
+                <th>DATE TIME</th>
+              </tr>
+            </thead>
+            <tbody>
+              {% for row in session['data_stock'] %}
+              <tr>
+                {% for cell in row %}
+                {% if cell != 'Buy' or cell !='Sell' %}
+                <td>{{ cell }}</td>
+                {% endif %}
+                {% endfor %}
+              </tr>
+              {% endfor %}
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="home-container2">
+    <div class="home-container1-values home-container1-values_all">
+      <div class="table-container" style="overflow-y: auto;">
+        <table style="width:100%" id="trans_portfolio">
+          <thead>
+            <tr>
+              <th>STOCK</th>
+              <th>AMOUNT</th>
+              <th>TOTAL PRICE</th>
+              <!-- <th>ACTION</th> -->
+            </tr>
+          </thead>
+          <tbody>
+            {% for row in session['data_port'] %}
+            <tr>
+              {% for cell in row %}
+              <td>{{ cell }}</td>
+              {% endfor %}
+            </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% for message in get_flashed_messages() %}
+<div id='id02' class="modal" autocomplete="off">
+  <div class="modal__body modal__body_stock_buy">
+    <div class="msg2">{{ message }}</div>
+    <div class="close-crt--acc">
+      <span onclick="document.getElementById('id02').style.display='none'" title="Close tab">
+        <button class="btn-close-acc">CLOSE</button>
+      </span>
+    </div>
+  </div>
+</div>
+{% endfor %}
+
+<!-- <script>
+  function increment_stocks() {
+    document.getElementById('Amount_stocks').stepUp(100);
+  }
+
+  function decrement_stocks() {
+    document.getElementById('Amount_stocks').stepDown(100);
+  }
+</script> -->
+
+
+{% endblock %}
